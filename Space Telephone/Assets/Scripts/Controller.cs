@@ -6,12 +6,13 @@ public class Controller : MonoBehaviour
 {
 
     public GameObject sourcePrefab, destinationPrefab, photonPrefab;
-    GameObject source, destination, photon, canvas;
+    GameObject source, destination, photon, canvas, blackhole;
 
     public Vector2 sourceLocation, destinationLocation;
     Vector2 mousePos;
 
-    float angle = 0f;
+    float angle = 0f, speed = 10f;
+    double gravitation = 0;
     Vector2 objectPos, direction;
 
 	// Use this for initialization
@@ -20,6 +21,7 @@ public class Controller : MonoBehaviour
         sourceLocation = new Vector2(-13, 2);
         destinationLocation = new Vector2(13, -3);
         canvas = GameObject.Find("Canvas");
+        blackhole = GameObject.Find("Blackhole");
 
         source = Instantiate(sourcePrefab, canvas.transform);
         source.transform.position = Camera.main.WorldToScreenPoint(sourceLocation);
@@ -45,7 +47,11 @@ public class Controller : MonoBehaviour
 
         if (photon != null)
         {
-            photon.transform.position += (Vector3)direction * 10f * Time.deltaTime;
+            gravitation = 10/Mathf.Pow(Vector2.Distance(photon.transform.position, Camera.main.ScreenToWorldPoint(blackhole.transform.position)),2);
+            gravitation = gravitation * Mathf.Sign(Vector2.SignedAngle(direction, Camera.main.ScreenToWorldPoint(blackhole.transform.position) - photon.transform.position));
+            print(gravitation);
+            direction = Quaternion.Euler(0, 0, (float)gravitation) * direction;
+            photon.transform.position += (Vector3)direction * speed * Time.deltaTime;
         }
 	}
 }
