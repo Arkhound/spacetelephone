@@ -1,2 +1,48 @@
 
 Space Telephone/Library/ScriptAssemblies/BuiltinAssemblies.stamp
+
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+/[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+ 
+# ============================================= #
+# Visual Studio / MonoDevelop / Rider generated #
+# ============================================= #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+/.idea*/
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+*.fobj
+fmod.log
+fmod_editor.log
+.vscode
+*.dwlt
+Space Telephone/Library/assetDatabase3
+Space Telephone/.vs/Space Telephone/v15/Server/sqlite3/storage.ide
+Space Telephone/.vs/Space Telephone/v15/.suo
+Space Telephone/Library/ScriptAssemblies/Assembly-CSharp.dll
+Space Telephone/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb

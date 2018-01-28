@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Controller : MonoBehaviour
 {
 
     public GameObject sourcePrefab, destinationPrefab, photonPrefab;
-    GameObject source, destination, photon, canvas, blackhole;
+    public GameObject source, destination, photon, canvas, blackhole;
 
     public Vector2 sourceLocation, destinationLocation;
     Vector2 mousePos;
 
-    float angle = 0f, speed = 10f;
-    double gravitation = 0;
+    float angle = 0f;
     Vector2 objectPos, direction;
 
 	// Use this for initialization
@@ -38,20 +38,11 @@ public class Controller : MonoBehaviour
         angle = (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) - 90f;
         source.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Destroy(photon);
             photon = Instantiate(photonPrefab, sourceLocation, Quaternion.identity);
-            direction = mousePos.normalized;
-        }
-
-        if (photon != null)
-        {
-            gravitation = 10/Mathf.Pow(Vector2.Distance(photon.transform.position, Camera.main.ScreenToWorldPoint(blackhole.transform.position)),2);
-            gravitation = gravitation * Mathf.Sign(Vector2.SignedAngle(direction, Camera.main.ScreenToWorldPoint(blackhole.transform.position) - photon.transform.position));
-            print(gravitation);
-            direction = Quaternion.Euler(0, 0, (float)gravitation) * direction;
-            photon.transform.position += (Vector3)direction * speed * Time.deltaTime;
+            photon.GetComponent<Photon>().direction = mousePos.normalized;
         }
 	}
 }
