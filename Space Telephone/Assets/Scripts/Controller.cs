@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Controller : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Controller : MonoBehaviour
         angle = (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) - 90f;
         source.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Destroy(photon);
             photon = Instantiate(photonPrefab, sourceLocation, Quaternion.identity);

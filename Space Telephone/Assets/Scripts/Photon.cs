@@ -28,7 +28,6 @@ public class Photon : MonoBehaviour
         //Photon movement
         gravitation = 10 / Mathf.Pow(Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(blackhole.transform.position)), 2);
         gravitation = gravitation * Mathf.Sign(Vector2.SignedAngle(direction, Camera.main.ScreenToWorldPoint(blackhole.transform.position) - transform.position));
-        print(gravitation);
         direction = Quaternion.Euler(0, 0, (float)gravitation) * direction;
         transform.position += (Vector3)direction * speed * Time.deltaTime;
 
