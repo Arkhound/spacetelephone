@@ -18,8 +18,8 @@ public class Controller : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        sourceLocation = new Vector2(-13, 2);
-        destinationLocation = new Vector2(13, -3);
+        sourceLocation = new Vector2(-7, 2);
+        destinationLocation = new Vector2(7, -3);
         canvas = GameObject.Find("Canvas");
         blackhole = GameObject.Find("Blackhole");
 
