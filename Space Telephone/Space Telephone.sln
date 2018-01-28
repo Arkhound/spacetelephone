@@ -1,7 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Telephone", "Assembly-CSharp.csproj", "{C8C8BFB1-1725-9E52-8DB5-EB0040C3AF3F}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Telephone", "Space Telephone.csproj", "{A9D4428A-9AD0-D655-8308-A6B5A2E1A326}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Telephone.Plugins", "Space Telephone.Plugins.csproj", "{058BC6AE-F794-4436-E780-DCD909E33DA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Telephone.Editor.Plugins", "Space Telephone.Editor.Plugins.csproj", "{BE4E06EE-DF21-2CE8-8909-F7E98125FE7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space Telephone.Editor", "Space Telephone.Editor.csproj", "{B17B7566-8144-FE33-EE01-D540A4D3A741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +15,24 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8C8BFB1-1725-9E52-8DB5-EB0040C3AF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8C8BFB1-1725-9E52-8DB5-EB0040C3AF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8C8BFB1-1725-9E52-8DB5-EB0040C3AF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8C8BFB1-1725-9E52-8DB5-EB0040C3AF3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D4428A-9AD0-D655-8308-A6B5A2E1A326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D4428A-9AD0-D655-8308-A6B5A2E1A326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D4428A-9AD0-D655-8308-A6B5A2E1A326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D4428A-9AD0-D655-8308-A6B5A2E1A326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058BC6AE-F794-4436-E780-DCD909E33DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058BC6AE-F794-4436-E780-DCD909E33DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058BC6AE-F794-4436-E780-DCD909E33DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058BC6AE-F794-4436-E780-DCD909E33DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE4E06EE-DF21-2CE8-8909-F7E98125FE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4E06EE-DF21-2CE8-8909-F7E98125FE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4E06EE-DF21-2CE8-8909-F7E98125FE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4E06EE-DF21-2CE8-8909-F7E98125FE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17B7566-8144-FE33-EE01-D540A4D3A741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17B7566-8144-FE33-EE01-D540A4D3A741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17B7566-8144-FE33-EE01-D540A4D3A741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17B7566-8144-FE33-EE01-D540A4D3A741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

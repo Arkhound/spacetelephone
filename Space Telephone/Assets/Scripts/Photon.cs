@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Photon : MonoBehaviour
 {
-    public Vector2 direction, newDir;
-    float offset, speed = 10f, radians, sin, cos, tx, ty;
+    public Vector2 direction, newDir, newDir2;
+    float offset, radians, sin, cos, tx, ty, ux, uy;
+    public float wavelengthFactor = 10f, amplitudeFactor = 0.5f;
     double gravitation;
+
+
+    public float minDist;
+    public float maxDist;
 
     GameObject controller, blackhole;
 
@@ -25,19 +30,30 @@ public class Photon : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        Vector3 blackholePos = Camera.main.ScreenToWorldPoint(blackhole.transform.position);
+
         //Photon movement
-        gravitation = 10 / Mathf.Pow(Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(blackhole.transform.position)), 2);
-        gravitation = gravitation * Mathf.Sign(Vector2.SignedAngle(direction, Camera.main.ScreenToWorldPoint(blackhole.transform.position) - transform.position));
+        gravitation = 10 / Mathf.Pow(Vector2.Distance(transform.position, blackholePos), 2);
+        gravitation = gravitation * Mathf.Sign(Vector2.SignedAngle(direction, blackholePos - transform.position));
         direction = Quaternion.Euler(0, 0, (float)gravitation) * direction;
-        transform.position += (Vector3)direction * speed * Time.deltaTime;
+
+        ux = (blackholePos - transform.position).x;
+        uy = (blackholePos - transform.position).y;
+        newDir2 = new Vector2((cos * ux) - (sin * uy), (sin * ux) + (cos * uy));
+
+        wavelengthFactor -= Mathf.Sign(Vector2.SignedAngle(direction, newDir2)) * 
+             Vector2.Distance(transform.position, blackholePos) * 0.015f;
+
+        transform.position += (Vector3)direction * wavelengthFactor * Time.deltaTime;
 
         //Wavelength movement
         tx = direction.x;
         ty = direction.y;
 
         newDir = new Vector2((cos * tx) - (sin * ty), (sin * tx) + (cos * ty));
+        
 
-        transform.GetChild(0).position = (Vector2)transform.position - newDir.normalized * 0.5f * Mathf.Sin(50 * offset);
+        transform.GetChild(0).position = (Vector2)transform.position - newDir.normalized * amplitudeFactor * Mathf.Sin(50 * offset);
         offset += Time.deltaTime;
     }
 }

@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour
     public Vector2 sourceLocation, destinationLocation;
     Vector2 mousePos;
 
-    float angle = 0f;
+    float angle = 0f, wavelengthFactor = 10f, amplitudeFactor = 0.5f;
     Vector2 objectPos, direction;
 
 	// Use this for initialization
@@ -38,11 +38,25 @@ public class Controller : MonoBehaviour
         angle = (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) - 90f;
         source.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            wavelengthFactor -= 1f;
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            wavelengthFactor += 1f;
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            amplitudeFactor += 0.1f;
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            amplitudeFactor -= 0.1f;
+
+        if (Input.GetMouseButtonDown(0)/* && !EventSystem.current.IsPointerOverGameObject()*/)
         {
             Destroy(photon);
             photon = Instantiate(photonPrefab, sourceLocation, Quaternion.identity);
             photon.GetComponent<Photon>().direction = mousePos.normalized;
+            photon.GetComponent<Photon>().amplitudeFactor = amplitudeFactor;
+            photon.GetComponent<Photon>().wavelengthFactor = wavelengthFactor;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
 	}
 }

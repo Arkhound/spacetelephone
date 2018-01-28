@@ -170,3 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
   newDir: {x: 0, y: 0}
+  newDir2: {x: 0, y: 0}
+  wavelengthFactor: 10
+  amplitudeFactor: 0.5
+  minDist: 0
+  maxDist: 20
